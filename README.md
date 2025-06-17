@@ -1,5 +1,6 @@
 # Project Documentation
 Project: A heart disease classifier
+
 Learning goals:
 - Learn how to clean data
 - Learn the basics of setting up, training, and testing a neural network
