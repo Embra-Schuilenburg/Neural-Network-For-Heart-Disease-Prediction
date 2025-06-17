@@ -170,11 +170,11 @@ y_test = y_test.to_numpy().reshape(1, -1)  # Shape: (1, 60)
 print("X_train shape:", X_train.shape)
 print("y_train shape:", y_train.shape)
 
-# train the model
+# train model
 layer_dims = [13, 6, 1]  # 1 hidden layer with 6 neurons
-learning_rate = 0.01  # Stable training
+learning_rate = 0.001  # Stable training
 epochs = 10000  # Medium-length run
-params, cost_history = train(X_train, y_train, layer_dims, epochs=10000, lr=0.01)
+params, cost_history = train(X_train, y_train, layer_dims, epochs=10000, lr=0.001)
 
 # analyze model performance
 y_pred_test = predict(X_test, params)

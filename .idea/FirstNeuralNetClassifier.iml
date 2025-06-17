@@ -3,8 +3,10 @@
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
       <excludeFolder url="file://$MODULE_DIR$/.venv" />
+      <excludePattern pattern="venv" />
+      <excludePattern pattern="coverage.xml" />
     </content>
-    <orderEntry type="jdk" jdkName="Python 3.13 (FirstNeuralNetClassifier)" jdkType="Python SDK" />
+    <orderEntry type="jdk" jdkName="Python 3.13 (Neural-Network-For-Heart-Disease-Prediction)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
 </module>
