@@ -3,6 +3,8 @@ import matplotlib.pyplot as plt
 from ucimlrepo import fetch_ucirepo
 import pandas as pd
 from sklearn.preprocessing import StandardScaler
+from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
+import matplotlib.pyplot as plt
 
 
 def init_params(layer_dims):
@@ -62,7 +64,8 @@ def one_layer_backward(dA, cache):
     linear_cache, activation_cache = cache
 
     Z = activation_cache
-    dZ = dA * sigmoid(Z) * (1 - sigmoid(Z))  # The derivative of the sigmoid function
+    A, _ = sigmoid(Z)
+    dZ = dA * A * (1 - A)
 
     A_prev, W, b = linear_cache
     m = A_prev.shape[1]
@@ -80,22 +83,23 @@ def backprop(AL, Y, caches):
     m = AL.shape[1]
     Y = Y.reshape(AL.shape)
 
+    # Derivative of cost w.r.t. final activation
     dAL = -(np.divide(Y, AL) - np.divide(1 - Y, 1 - AL))
 
-    current_cache = caches[L - 1]
-    grads["dA" + str(L - 1)], grads["dW" + str(L - 1)], grads["db" + str(L - 1)] = (
-        one_layer_backward(dAL, current_cache)
-    )
+    # Backprop for output layer (layer L)
+    current_cache = caches[-1]
+    dA_prev, dW, db = one_layer_backward(dAL, current_cache)
+    grads["dA" + str(L)] = dA_prev
+    grads["dW" + str(L)] = dW
+    grads["db" + str(L)] = db
 
-    for l in reversed(range(L - 1)):
-
-        current_cache = caches[l]
-        dA_prev_temp, dW_temp, db_temp = one_layer_backward(
-            grads["dA" + str(l + 1)], current_cache
-        )
-        grads["dA" + str(l)] = dA_prev_temp
-        grads["dW" + str(l + 1)] = dW_temp
-        grads["db" + str(l + 1)] = db_temp
+    # Loop over previous layers
+    for l in reversed(range(1, L)):
+        current_cache = caches[l - 1]
+        dA_prev, dW, db = one_layer_backward(grads["dA" + str(l + 1)], current_cache)
+        grads["dA" + str(l)] = dA_prev
+        grads["dW" + str(l)] = dW
+        grads["db" + str(l)] = db
 
     return grads
 
@@ -103,13 +107,9 @@ def backprop(AL, Y, caches):
 def update_parameters(parameters, grads, learning_rate):
     L = len(parameters) // 2
 
-    for l in range(L):
-        parameters["W" + str(l + 1)] = (
-            parameters["W" + str(l + 1)] - learning_rate * grads["W" + str(l + 1)]
-        )
-        parameters["b" + str(l + 1)] = (
-            parameters["b" + str(l + 1)] - learning_rate * grads["b" + str(l + 1)]
-        )
+    for l in range(1, L + 1):
+        parameters["W" + str(l)] -= learning_rate * grads["dW" + str(l)]
+        parameters["b" + str(l)] -= learning_rate * grads["db" + str(l)]
 
     return parameters
 
@@ -127,6 +127,11 @@ def train(X, Y, layer_dims, epochs, lr):
         params = update_parameters(params, grads, lr)
 
     return params, cost_history
+
+def predict(X, params):
+    A, _ = forward_prop(X, params)
+    predictions = (A > 0.5).astype(int)
+    return predictions
 
 
 # fetch dataset
@@ -165,9 +170,30 @@ y_test = y_test.to_numpy().reshape(1, -1)  # Shape: (1, 60)
 print("X_train shape:", X_train.shape)
 print("y_train shape:", y_train.shape)
 
-# running the model
+# train the model
 layer_dims = [13, 6, 1]  # 1 hidden layer with 6 neurons
 learning_rate = 0.01  # Stable training
 epochs = 10000  # Medium-length run
-
 params, cost_history = train(X_train, y_train, layer_dims, epochs=10000, lr=0.01)
+
+# analyze model performance
+y_pred_test = predict(X_test, params)
+accuracy = np.mean(y_pred_test == y_test)
+print(f"Test Accuracy: {accuracy * 100:.2f}%")
+
+# print test cases
+preds = y_pred_test.flatten()
+labels = y_test.flatten()
+print("Index | Predicted | Actual")
+print("---------------------------")
+for i, (pred, true) in enumerate(zip(preds, labels)):
+    print(f"{i:5} | {pred:9} | {true}")
+
+# confusion matrix
+preds = predict(X_test, params).flatten()
+true = y_test.flatten()
+cm = confusion_matrix(true, preds)
+disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=["No Disease", "Disease"])
+disp.plot(cmap='Blues')
+plt.title("Confusion Matrix")
+plt.show()
