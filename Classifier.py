@@ -172,9 +172,9 @@ print("y_train shape:", y_train.shape)
 
 # train model
 layer_dims = [13, 6, 1]  # 1 hidden layer with 6 neurons
-learning_rate = 0.001  # Stable training
-epochs = 10000  # Medium-length run
-params, cost_history = train(X_train, y_train, layer_dims, epochs=10000, lr=0.001)
+learning_rate = 0.01  # Stable training
+epochs = 5000  # Medium-length run
+params, cost_history = train(X_train, y_train, layer_dims, epochs=5000, lr=0.01)
 
 # analyze model performance
 y_pred_test = predict(X_test, params)
