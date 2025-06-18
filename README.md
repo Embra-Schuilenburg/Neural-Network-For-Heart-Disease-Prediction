@@ -15,7 +15,7 @@ First:
 - learning rate: .01
 - 10000 epochs
 - test accuracy: 88.33%
-- <img src="https://github.com/Embra-Schuilenburg/Neural-Network-For-Heart-Disease-Prediction/blob/master/images/firstIteration%20confusion%20matrix" alt="First iteration's confustion matrix, 31 true negatives, 2 false negatives, 5 false positives, and 22 true positives" width="400"/>
+- <img src="https://github.com/Embra-Schuilenburg/Neural-Network-For-Heart-Disease-Prediction/blob/master/images/first%20Iteration%20confusion%20matrix" alt="First iteration's confustion matrix, 31 true negatives, 2 false negatives, 5 false positives, and 22 true positives" width="400"/>
 Second (lower learning rate):
 - 1 hidden layer with 6 units
 - learning rate: .001
