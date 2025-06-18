@@ -4,7 +4,7 @@ Project: A heart disease classifier
 Learning goals:
 - Learn how to clean data
 - Learn the basics of setting up, training, and testing a neural network
-Data used: https://archive.ics.uci.edu/dataset/45/heart+disease
+- Data used: https://archive.ics.uci.edu/dataset/45/heart+disease
 ## Project reflection
 I created this project by following a neural network creation tutorial found on freeCodeCamp() which can be found here: https://www.freecodecamp.org/news/building-a-neural-network-from-scratch/. I then used publically available heart disease data linked above to train and test the neural network I created. This project was made easy by following tutorials but showed me how to use the nueral network theory I learned my undergraduate AI class. My favorite part was learning more about backpropigation, and some challenges I was faced were:
 1. confusion regarding how data should be split
