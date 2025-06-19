@@ -171,7 +171,7 @@ print("X_train shape:", X_train.shape)
 print("y_train shape:", y_train.shape)
 
 # train model
-layer_dims = [13, 3, 1]  # array of layers
+layer_dims = [13, 2, 1]  # array of layers
 learning_rate = 0.01  # Stable training
 epochs = 6000  # short-length run
 params, cost_history = train(X_train, y_train, layer_dims, epochs, learning_rate)
@@ -204,7 +204,7 @@ W1 = params["W1"]  # Shape: (hidden layer, input layer)
 b1 = params["b1"]
 feature_names = X.columns
 weights_df = pd.DataFrame(
-    W1, columns=feature_names, index=["Neuron 1", "Neuron 2", "Neuron 3"]
+    W1, columns=feature_names, index=["Neuron 1", "Neuron 2"]
 )
 print(weights_df.T)
 
