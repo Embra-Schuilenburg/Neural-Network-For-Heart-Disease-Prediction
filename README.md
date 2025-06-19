@@ -44,6 +44,7 @@ Test case table:
 |--------|---|---|---|---|---|---|---|---|---|---|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|----|
 | Predicted | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 1 | 1 | 0 | 1  | 0  | 0  | 0  | 0  | 0  | 0  | 1  | 1  | 0  | 1  | 1  | 1  | 0  | 1  | 0  | 1  | 1  | 0  | 0  | 0  | 0  | 1  | 0  | 0  | 0  | 1  | 0  | 1  | 1  | 0  | 1  | 1  | 0  | 0  | 1  | 0  | 1  | 0  | 0  | 0  | 1  | 0  | 0  | 1  | 1  | 0  | 0  | 1  | 1  |
 | Actual    | 0 | 1 | 0 | 1 | 0 | 0 | 0 | 0 | 1 | 0 | 1  | 0  | 0  | 0  | 0  | 0  | 0  | 0  | 1  | 0  | 1  | 1  | 1  | 0  | 1  | 0  | 1  | 1  | 0  | 0  | 0  | 0  | 1  | 0  | 0  | 0  | 1  | 0  | 1  | 1  | 0  | 1  | 1  | 0  | 0  | 1  | 0  | 1  | 0  | 0  | 0  | 1  | 1  | 0  | 1  | 1  | 0  | 0  | 1  | 0  |
+
 Confusion matrix:
 <img src="https://github.com/Embra-Schuilenburg/Neural-Network-For-Heart-Disease-Prediction/blob/master/images/first%20Iteration%20confusion%20matrix" alt="First iteration's confusion matrix, 33 true negatives, 2 false negatives, 3 false positives, and 22 true positives" width="400"/>	
 ## AI usage summary
