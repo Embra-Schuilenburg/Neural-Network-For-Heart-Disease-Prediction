@@ -7,7 +7,7 @@ Learning goals:
 
 Data used: [https://archive.ics.uci.edu/dataset/45/heart+disease](https://archive.ics.uci.edu/dataset/45/heart+disease)
 ## Project reflection
-I created this project by following a neural network creation tutorial found on freeCodeCamp() which can be found here: https://www.freecodecamp.org/news/building-a-neural-network-from-scratch/. I then used publically available heart disease data set linked above to train and test the neural network I created. This project was made easy by following tutorials but showed me how to use the nueral network theory I learned my undergraduate AI class. My favorite part was learning more about backpropagation, and some challenges I faced were:
+I created this project by following a neural network creation tutorial found on freeCodeCamp() which can be found here: https://www.freecodecamp.org/news/building-a-neural-network-from-scratch/. I then used publically available heart disease data set linked above to train and test the neural network I created. This was my first time making a neural network, and by doing so I got to use the nueral network theory I learned my undergraduate AI class in a real world problem. My favorite part was learning more about backpropagation, and some challenges I faced were:
 1. confusion regarding how data should be split
 2. errors regarding labeling in the backpropagation function
 ## Model iterations
