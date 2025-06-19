@@ -1,5 +1,4 @@
 import numpy as np
-import matplotlib.pyplot as plt
 from ucimlrepo import fetch_ucirepo
 import pandas as pd
 from sklearn.preprocessing import StandardScaler
@@ -128,6 +127,7 @@ def train(X, Y, layer_dims, epochs, lr):
 
     return params, cost_history
 
+
 def predict(X, params):
     A, _ = forward_prop(X, params)
     predictions = (A > 0.5).astype(int)
@@ -171,10 +171,10 @@ print("X_train shape:", X_train.shape)
 print("y_train shape:", y_train.shape)
 
 # train model
-layer_dims = [13, 6, 1]  # 1 hidden layer with 6 neurons
+layer_dims = [13, 3, 1]  # array of layers
 learning_rate = 0.01  # Stable training
-epochs = 5000  # Medium-length run
-params, cost_history = train(X_train, y_train, layer_dims, epochs=5000, lr=0.01)
+epochs = 6000  # short-length run
+params, cost_history = train(X_train, y_train, layer_dims, epochs, learning_rate)
 
 # analyze model performance
 y_pred_test = predict(X_test, params)
@@ -193,7 +193,20 @@ for i, (pred, true) in enumerate(zip(preds, labels)):
 preds = predict(X_test, params).flatten()
 true = y_test.flatten()
 cm = confusion_matrix(true, preds)
-disp = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=["No Disease", "Disease"])
-disp.plot(cmap='Blues')
+disp = ConfusionMatrixDisplay(
+    confusion_matrix=cm, display_labels=["No Disease", "Disease"]
+)
+disp.plot(cmap="Blues")
 plt.title("Confusion Matrix")
 plt.show()
+
+W1 = params["W1"]  # Shape: (hidden layer, input layer)
+b1 = params["b1"]
+feature_names = X.columns
+weights_df = pd.DataFrame(
+    W1, columns=feature_names, index=["Neuron 1", "Neuron 2", "Neuron 3"]
+)
+print(weights_df.T)
+
+W2 = params["W2"]  # Shape: (output layer, hidden layer)
+print("Output layer weights (W2):", W2)
