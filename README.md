@@ -51,7 +51,7 @@ Confusion matrix:
 
 <img src="https://github.com/Embra-Schuilenburg/Neural-Network-For-Heart-Disease-Prediction/blob/master/images/first%20Iteration%20confusion%20matrix" alt="First iteration's confusion matrix, 33 true negatives, 2 false negatives, 3 false positives, and 22 true positives" width="400"/>	
 
-Unit activation quantities and variable:
+### Unit activation quantities and variable:
 - Input variable activations:
 
 |            | age      | sex      | cp       | trestbps | chol     | fbs      | restecg  | thalach  | exang    | oldpeak  | slope    | ca       | thal     |
