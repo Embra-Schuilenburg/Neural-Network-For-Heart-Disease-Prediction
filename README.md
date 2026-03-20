@@ -1,5 +1,7 @@
-# Project Documentation
+# Project Documentation - OUTDATED
 Project: A heart disease classifier
+
+**2026-03-19: Important note, this repository is outdated and not a reflection of my current knowledge. I made this repository and published it to track my learning over time. Within this repository I make many mistakes, due to a lack of knowledge. I have since learned more in this field and am in the process of applying my new knowledge to new projects.**
 
 Learning goals:
 - Learn how to clean data
